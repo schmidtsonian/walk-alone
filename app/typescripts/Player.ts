@@ -15,7 +15,7 @@ module app {
         constructor ( elementName: string ) {
             
             this.body = document.getElementById( elementName );
-            this.forceJump = 0.1;
+            this.forceJump = 0;
         }
         
         shoot (): void {
@@ -32,22 +32,28 @@ module app {
 
             this.forceJump = this.forceJump < 1 ? this.forceJump + 0.1 : 1;
             
-            // TweenMax.to(this.body, 0.1, {height: 50 - (this.forceJump)})
+            TweenMax.to(this.body, 0.1, {height: 50 - (20 * this.forceJump)});
             console.log('apply force', this.forceJump);  
         }, 50 );
         
         jump = Utils.debounce( () => {
-            
+
             if(this.isJumping) return;
-            
+
             this.isJumping = true;
             console.log('jump! at ', this.forceJump * 100);
             
-            setTimeout( () => {
-                this.isJumping = false;
-                this.forceJump = 0.1;
-                console.log('reset force')
-            }, 1000 * this.forceJump );
+            TweenMax.to(this.body, 0.5 * this.forceJump, { height: '80px', bottom: 420 * this.forceJump, onComplete: () => {
+                
+                // todos los objetos caen a la misma velocidad segun newton no?
+                TweenMax.to(this.body, 0.5 * this.forceJump, { height: '50px', bottom: 0, onComplete: () => {
+                    
+                    this.isJumping = false;
+                    this.forceJump = 0;
+                    console.log('reset force')
+                    
+                } } );
+            } });
         }, 250 );
         
         dead (): void {
