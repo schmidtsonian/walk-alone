@@ -1,6 +1,5 @@
 // /// <reference path="definitions/greensock/greensock.d.ts" />
 // /// <reference path="definitions/jquery/jquery.d.ts" />
-// /// <reference path="index/IndexApp.ts" />
 /// <reference path="Player.ts" />
 
 import Player = app.Player;
@@ -10,10 +9,20 @@ var player: Player;
 
 
 	// Controles
-	document.body.onkeypress = (e) => {
+	document.body.onkeydown = (e) => {
 		switch (e.which) {
-			case 115: player.jump(); break;
-			case 32:  player.shoot(); break;
+			case 74: player.applyForce(); break; //j letter
+			case 70: player.shoot(); break; //f letter
+
+			default: return;
+		}
+		e.preventDefault();
+	}
+	
+	document.body.onkeyup = (e) => {
+
+		switch (e.which) {
+			case 74: player.jump(); break; //j letter
 
 			default: return;
 		}

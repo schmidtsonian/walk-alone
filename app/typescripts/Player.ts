@@ -1,8 +1,15 @@
+// <reference path="definitions/greensock/greensock.d.ts" />
+
+/// <reference path="Utils.ts" />
+
 module app {
+    
+    import Utils = app.Utils;
     
     export class Player {
         
         private body: HTMLElement;
+        private forceJump: number;
 
         constructor ( elementName: string ) {
             
@@ -19,14 +26,17 @@ module app {
             console.log('reloadArmor');
         }
         
-        jump (): void {
-            
-            console.log('jump');
-        }
+        applyForce = Utils.throttle( () => {
+            console.log('apply force');
+        }, 250 );
+        
+        jump = Utils.debounce( () => {
+            console.log('jump!');
+        }, 250 );
         
         dead (): void {
             
             console.log('dead');
-        }        
+        }    
     }
 }
