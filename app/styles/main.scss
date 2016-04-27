@@ -42,7 +42,6 @@ body{
 	left: 10px;
 	background-color: $COLOR_PLAYER;
 	border-radius: 50%;
-	animation: rotation 1s infinite linear;
 	&:after{
 		content: "";
 		display: block;
@@ -50,6 +49,7 @@ body{
 		width: 1px;
 		height: 20px;
 		background-color: $COLOR_CANVAS;
+		animation: rotation 1s infinite linear;
 		
 	}
 }

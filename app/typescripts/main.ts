@@ -11,8 +11,15 @@ var player: Player;
 	// Controles
 	document.body.onkeydown = (e) => {
 		switch (e.which) {
-			case 74: player.applyForce(); break; //j letter
-			case 70: player.shoot(); break; //f letter
+
+			case 74: //j letter
+				if( !player.isJumping )
+					player.applyForce(); 
+				break;
+
+			case 70: //f letter
+				player.shoot(); 
+				break;
 
 			default: return;
 		}
