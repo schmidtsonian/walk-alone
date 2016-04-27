@@ -15,7 +15,7 @@ module app {
         constructor ( elementName: string ) {
             
             this.body = document.getElementById( elementName );
-            this.forceJump = 1;
+            this.forceJump = 0.1;
         }
         
         shoot (): void {
@@ -30,7 +30,9 @@ module app {
         
         applyForce = Utils.throttle( () => {
 
-            this.forceJump = this.forceJump < 10 ? this.forceJump + 1 : 10;
+            this.forceJump = this.forceJump < 1 ? this.forceJump + 0.1 : 1;
+            
+            // TweenMax.to(this.body, 0.1, {height: 50 - (this.forceJump)})
             console.log('apply force', this.forceJump);  
         }, 50 );
         
@@ -43,9 +45,9 @@ module app {
             
             setTimeout( () => {
                 this.isJumping = false;
-                this.forceJump = 1;
+                this.forceJump = 0.1;
                 console.log('reset force')
-            }, 100 * this.forceJump );
+            }, 1000 * this.forceJump );
         }, 250 );
         
         dead (): void {
