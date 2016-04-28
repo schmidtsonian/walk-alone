@@ -11,7 +11,7 @@ Instrucciones
  3. `~ npm && bower install`
  4. `~ gulp`
  
- Controles
- ---------
-  - Presionar `j` para saltar
-  - Presionar `f` para disparar
+Controles
+---------
+ - Presionar `j` para saltar
+ - Presionar `f` para disparar

@@ -12,7 +12,7 @@ module app {
 
         private right: number = 0;
          
-        constructor( playArea: HTMLElement, height: number = 10, width: number = 10, velocity: number = .5 ) {
+        constructor( playArea: HTMLElement, width: number = 10, height: number = 10, velocity: number = .5 ) {
             
             this.playArea = playArea;
             this.height = height; 
@@ -26,14 +26,17 @@ module app {
             this.body.style.width = this.width + 'px';
             this.body.style.height = this.height + 'px';
             this.body.style.bottom = '0';
-            this.render();
         }
         
-        private render (): void {
+        release ( timeout: number = 0 ): void {
             
-            this.playArea.appendChild( this.body );
-            
-            TweenLite.to(this.body, 1 * this.velocity, { right: '768px', onComplete: this.destroy.bind(this) });
+            setTimeout( () => {
+                console.log('release enemy!')
+                this.playArea.appendChild( this.body );
+                
+                TweenLite.to(this.body, 1 * this.velocity, { right: '768px', onComplete: this.destroy.bind(this) });
+                
+            }, timeout * 1000 );
         }
         
         destroy (): void {

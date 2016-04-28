@@ -46,7 +46,7 @@ module app {
             TweenMax.to(this.body, 0.5 * this.forceJump, { height: '80px', bottom: 420 * this.forceJump, onComplete: () => {
                 
                 // todos los objetos caen a la misma velocidad segun newton no?
-                TweenMax.to(this.body, 0.5 * this.forceJump, { height: '50px', bottom: 0, onComplete: () => {
+                TweenMax.to(this.body, 2 * this.forceJump, { height: '50px', bottom: 0, onComplete: () => {
                     
                     this.isJumping = false;
                     this.forceJump = 0;
