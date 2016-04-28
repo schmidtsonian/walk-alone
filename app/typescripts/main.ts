@@ -2,8 +2,6 @@
 /// <reference path="Enemy.ts" />
 /// <reference path="Obstacle.ts" />
 
-var actualLevel = 1;
-
 var levels = [
 	[
 		{
@@ -59,10 +57,11 @@ import Enemy = app.Enemy;
 import Obstacle = app.Obstacle;
 
 var player: Player;
+var playArea: HTMLElement;
 
 (function () {
 	
-	var playArea = document.getElementById( 'js-canvas' );
+	playArea = document.getElementById( 'js-canvas' );
 	player = new Player('js-player');
 
 
@@ -93,10 +92,14 @@ var player: Player;
 		}
 		e.preventDefault();
 	}
+})();
+
+
+function loadLevel (lvl:number = 0) : void {
 	
-	for (var i = 0; i < levels[ actualLevel ].length; i++) {
+	for (var i = 0; i < levels[ lvl ].length; i++) {
 		
-		var value = levels[ actualLevel ][i];
+		var value = levels[ lvl ][i];
 
 		switch ( value.type ) {
 
@@ -114,4 +117,4 @@ var player: Player;
 		}
 		
 	}
-})();
+}
