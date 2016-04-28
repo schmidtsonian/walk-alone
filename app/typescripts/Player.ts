@@ -1,4 +1,4 @@
-// <reference path="definitions/greensock/greensock.d.ts" />
+/// <reference path="definitions/greensock/greensock.d.ts" />
 
 /// <reference path="Utils.ts" />
 

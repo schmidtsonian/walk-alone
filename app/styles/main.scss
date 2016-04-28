@@ -34,6 +34,8 @@ body{
 	background-color: $COLOR_CANVAS;
 	overflow: hidden;
 }
+
+
 .player{
 	position: absolute;
 	bottom: 0;
@@ -54,7 +56,13 @@ body{
 	}
 }
 
+.obstacle{
+	background-color: $COLOR_ENEMY_1;
+	position: absolute;
+	bottom: 0;
+}
+
 @keyframes rotation {
-   from {transform: rotate(0deg);}
-   to {transform: rotate(359deg);}
-  }
+	from {transform: rotate(0deg);}
+	to {transform: rotate(359deg);}
+}
