@@ -35,13 +35,17 @@ body{
 	overflow: hidden;
 }
 
-
-.player{
+.player,
+.obstacle,
+.enemy{
 	position: absolute;
 	bottom: 0;
+}
+
+.player{
 	width: 50px;
 	height: 50px;
-	left: 10px;
+	right: calc(100% - 60px); //porque no left? para comparar con 'right' de obstaculos o enemigos
 	background-color: $COLOR_PLAYER;
 	border-radius: 50%;
 	&:after{
@@ -58,8 +62,10 @@ body{
 
 .obstacle{
 	background-color: $COLOR_ENEMY_1;
-	position: absolute;
-	bottom: 0;
+}
+
+.enemy{
+	background-color: $COLOR_ENEMY_2;
 }
 
 @keyframes rotation {

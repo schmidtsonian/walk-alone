@@ -25,7 +25,7 @@ module app {
             this.body.style.right = ( this.width * -1 ) + 'px';
             this.body.style.width = this.width + 'px';
             this.body.style.height = this.height + 'px';
-            this.body.style.bottom = (500 - this.height) + 'px';
+            this.body.style.bottom = (500 - this.height) + 'px'; // porque no top? para comparar con el bottom de player
             this.render();
         }
         
