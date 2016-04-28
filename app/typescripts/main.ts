@@ -2,7 +2,9 @@
 /// <reference path="Enemy.ts" />
 /// <reference path="Obstacle.ts" />
 
+// Definición de niveles
 var levels = [
+	/*1*/
 	[
 		{
 			type: 'enemy',
@@ -26,6 +28,8 @@ var levels = [
 			velocity: 4,
 		}
 	],
+	
+	/*2*/
 	[
 		{
 			type: 'obstacle',
@@ -95,7 +99,11 @@ var playArea: HTMLElement;
 })();
 
 
-function loadLevel (lvl:number = 0) : void {
+// Carga un nivel!
+function loadLevel ( lvl: number = 0) : boolean {
+	
+	if( lvl < 1 || lvl > levels.length ) return false;
+	lvl = lvl - 1;
 	
 	for (var i = 0; i < levels[ lvl ].length; i++) {
 		
@@ -117,4 +125,6 @@ function loadLevel (lvl:number = 0) : void {
 		}
 		
 	}
+	
+	return true;
 }

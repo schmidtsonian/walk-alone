@@ -10,12 +10,19 @@ module app {
         
         private body: HTMLElement;
         private forceJump: number;
+        private isDead: boolean;
         private _isJumping: boolean = false;
 
         constructor ( elementName: string ) {
             
             this.body = document.getElementById( elementName );
             this.forceJump = 0;
+            this.isDead = false;
+        }
+        
+        private msgDead(): void {
+            
+            console.log('ESTAS MUERTO! No te puedes mover.');
         }
         
         shoot (): void {
@@ -30,18 +37,24 @@ module app {
         
         applyForce = Utils.throttle( () => {
 
+            if( this.isDead ){
+                this.msgDead();
+                return;
+            }
+            
             this.forceJump = this.forceJump < 1 ? this.forceJump + 0.1 : 1;
             
             TweenMax.to(this.body, 0.1, {height: 50 - (20 * this.forceJump)});
-            // console.log('apply force', this.forceJump);  
         }, 50 );
         
         jump = Utils.debounce( () => {
 
-            if(this.isJumping) return;
+            if( this.isJumping || this.isDead ){
+                this.msgDead();
+                return;
+            } 
 
             this.isJumping = true;
-            // console.log('jump! at ', this.forceJump * 100);
             
             TweenMax.to(this.body, 0.5 * this.forceJump, { height: '80px', bottom: 420 * this.forceJump, onComplete: () => {
                 
@@ -49,14 +62,14 @@ module app {
                     
                     this.isJumping = false;
                     this.forceJump = 0;
-                    // console.log('reset force')
-                    
                 } } );
             } });
         }, 250 );
         
         dead (): void {
             
+            this.isDead = true;
+
             console.log('dead');
         }
         
