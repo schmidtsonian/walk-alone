@@ -1,9 +1,13 @@
+/// <reference path="IRect.ts" />
+
 module app {
 
+    import IRect = app.IRect;
+    
     export class Utils {
         
         // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-        static detectCollition( rect1: iRect, rect2: iRect): boolean {
+        static detectCollition( rect1: IRect, rect2: IRect): boolean {
 
             if (rect1.x < rect2.x + rect2.w &&
                 rect1.x + rect1.w > rect2.x &&

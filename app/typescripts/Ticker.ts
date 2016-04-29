@@ -1,6 +1,10 @@
 /// <reference path="Player.ts" />
+/// <reference path="IRect.ts" />
+
 
 module app {
+    
+    import IRect = app.IRect;
     
     export class Ticker {
         
@@ -18,7 +22,7 @@ module app {
             
             setInterval( () => {
 		
-                var rectPlayer = {
+                var rectPlayer = <IRect> {
                     x: parseInt(this.player.body.style.right),
                     y: parseInt(this.player.body.style.bottom),
                     w: parseInt(this.player.body.style.width),
@@ -30,7 +34,7 @@ module app {
                 if(enemies.length > 0)
                     for (var i = 0; i < enemies.length; i++) {
                         var elEnemy: any = enemies[i];
-                        var rect1 = {
+                        var rect1 = <IRect> {
                             x: parseInt(elEnemy.style.right),
                             y: parseInt(elEnemy.style.bottom),
                             w: parseInt(elEnemy.style.width),
@@ -48,7 +52,7 @@ module app {
                 if(obstacles.length > 0){
                     for (var i = 0; i < obstacles.length; i++) {
                         var elObstacle: any = obstacles[i];
-                        var rect1 = {
+                        var rect1 = <IRect> {
                             x: parseInt(elObstacle.style.right),
                             y: parseInt(elObstacle.style.bottom),
                             w: parseInt(elObstacle.style.width),
@@ -65,7 +69,7 @@ module app {
                         if(bullets.length > 0){
                             for (var i = 0; i < bullets.length; i++) {
                                 var elBullet: any = bullets[i];
-                                var rect2 = {
+                                var rect2 = <IRect> {
                                     x: parseInt(elBullet.style.right),
                                     y: parseInt(elBullet.style.bottom),
                                     w: parseInt(elBullet.style.width),
