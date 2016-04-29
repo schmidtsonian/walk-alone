@@ -90,8 +90,8 @@ module app {
         dead (): void {
             
             this.isDead = true;
-
-            console.log('dead');
+            this.body.style.backgroundColor = 'black';
+            console.log('YOU DIE!!!!');
         }
         
         set isJumping ( isJumping:boolean ) { this._isJumping = isJumping; }

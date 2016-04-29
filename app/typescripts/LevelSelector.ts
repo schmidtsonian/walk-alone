@@ -33,7 +33,7 @@ var levels = [
 			type: 'enemy',
 			time: 0.2,
 			width: 10,
-			height: 400,
+			height: 300,
 			velocity: 5,
 		},
 		{

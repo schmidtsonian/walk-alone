@@ -46,4 +46,21 @@ var playArea: HTMLElement;
 	
 	ticker = new Ticker( playArea, player );
 	levelSelector = new LevelSelector( playArea );
+	
+	start();
 })();
+
+function start() {
+	
+	setTimeout(function() {
+		levelSelector.load(1);
+	}, 100);
+	
+	setTimeout(function() {
+		levelSelector.load(2);
+	}, 12000);
+	
+	setTimeout(function() {
+		levelSelector.load(3);
+	}, 20000);
+}
