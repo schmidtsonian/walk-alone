@@ -10,6 +10,7 @@ Instrucciones
  2. `~ cd walk-alone`
  3. `~ npm && bower install`
  4. `~ gulp`
+ 5. [http://localhost:8080](http://localhost:8080)
  
 Controles
 ---------
