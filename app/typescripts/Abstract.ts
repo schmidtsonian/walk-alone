@@ -32,7 +32,6 @@ module app {
             
             setTimeout( () => {
                 
-                console.log('release!');
                 this.playArea.appendChild( this.body );
                 
                 TweenLite.to(this.body, 1 * this.velocity, { right: '768px', onComplete: this.destroy.bind(this) });

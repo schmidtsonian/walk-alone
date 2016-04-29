@@ -1,6 +1,18 @@
 module app {
 
     export class Utils {
+        
+        // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        static detectCollition( rect1: iRect, rect2: iRect): boolean {
+
+            if (rect1.x < rect2.x + rect2.w &&
+                rect1.x + rect1.w > rect2.x &&
+                rect1.y < rect2.y + rect2.h &&
+                rect1.h + rect1.y > rect2.y) {
+                    return true;
+                }
+            return false;
+        }
 
         // https://davidwalsh.name/javascript-debounce-function
         static debounce(func: Function, wait: number, immediate?: boolean): Function {
