@@ -8,7 +8,31 @@ var levels = [
 	/*1*/
 	[
 		{
-			type: 'enemy',
+			type: 'obstacle',
+			time: .2,
+			width: 10,
+			height: 500,
+			velocity: 5,
+		},
+		{
+			type: 'obstacle',
+			time: 3,
+			width: 10,
+			height: 400,
+			velocity: 5,
+		},
+		{
+			type: 'obstacle',
+			time: 6,
+			width: 10,
+			height: 120,
+			velocity: 5,
+		}
+	],
+	/*2*/
+	[
+		{
+			type: 'obstacle',
 			time: 0.2,
 			width: 10,
 			height: 100,
@@ -16,25 +40,32 @@ var levels = [
 		},
 		{
 			type: 'enemy',
+			time: 0.2,
+			width: 10,
+			height: 300,
+			velocity: 5,
+		},
+		{
+			type: 'obstacle',
 			time: 2,
 			width: 10,
 			height: 100,
 			velocity: 3,
 		},
 		{
-			type: 'enemy',
+			type: 'obstacle',
 			time: 5,
 			width: 20,
-			height: 120,
+			height: 430,
 			velocity: 4,
 		}
 	],
 	
-	/*2*/
+	/*3*/
 	[
 		{
 			type: 'obstacle',
-			time: 0.2,
+			time: .2,
 			width: 10,
 			height: 200,
 			velocity: 5,
@@ -46,13 +77,106 @@ var levels = [
 			height: 200,
 			velocity: 5,
 		},
+		
+		{
+			type: 'obstacle',
+			time: 5.2,
+			width: 10,
+			height: 350,
+			velocity: 5,
+		},
 		{
 			type: 'enemy',
-			time: 5,
-			width: 20,
-			height: 120,
-			velocity: 4,
-		}
+			time: 5.2,
+			width: 10,
+			height: 100,
+			velocity: 5,
+		},
+	],
+		
+	/*4*/
+	[	
+		{
+			type: 'obstacle',
+			time: .2,
+			width: 10,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 1.2,
+			width: 10,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 2.2,
+			width: 10,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 3.2,
+			width: 10,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 4.2,
+			width: 10,
+			height: 460,
+			velocity: 10,
+		},
+	],
+	/*5*/
+	[	
+		{
+			type: 'obstacle',
+			time: .2,
+			width: 30,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 1.2,
+			width: 30,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 2.2,
+			width: 30,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 3.2,
+			width: 30,
+			height: 460,
+			velocity: 10,
+		},
+		{
+			type: 'obstacle',
+			time: 4.2,
+			width: 30,
+			height: 460,
+			velocity: 10,
+		},
+		
+		{
+			type: 'enemy',
+			time: 13.2,
+			width: 2,
+			height: 340,
+			velocity: 5,
+		},
 	]
 ];
 
