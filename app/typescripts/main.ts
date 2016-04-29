@@ -1,6 +1,7 @@
 /// <reference path="Player.ts" />
 /// <reference path="Enemy.ts" />
 /// <reference path="Obstacle.ts" />
+/// <reference path="Utils.ts" />
 
 // Definición de niveles
 var levels = [
@@ -56,6 +57,15 @@ var levels = [
 ];
 
 
+
+
+
+
+
+
+
+
+import Utils = app.Utils;
 import Player = app.Player;
 import Enemy = app.Enemy;
 import Obstacle = app.Obstacle;
@@ -89,15 +99,37 @@ var playArea: HTMLElement;
 	
 	document.body.onkeyup = (e) => {
 
-		switch (e.which) {
-			case 74: player.jump(); break; //j letter
-
+		switch (true) {
+			case (e.which == 74): player.jump(); break; //j letter, yes it's weird this comparation
+			case ((e.which - 48) > 0 && (e.which - 48) <= 5): loadLevel(e.which-48); break;
 			default: return;
 		}
 		e.preventDefault();
 	}
+	
+	ticker();
 })();
 
+
+// Checo posición de elementos cada 100 milisegundos
+function ticker ():void {
+	
+	setInterval( () => {
+		
+		var enemies = playArea.getElementsByClassName('enemy');
+		for (var i = 0; i < enemies.length; i++) {
+			var element: any = enemies[i];
+			console.log(element.style.right);
+		}
+		
+		var obstacles = playArea.getElementsByClassName('obstacle');
+		for (var i = 0; i < obstacles.length; i++) {
+			var element: any = obstacles[i];
+			console.log(element.style.right);
+		}
+
+	}, 100 );
+}
 
 // Carga un nivel!
 function loadLevel ( lvl: number = 0) : boolean {
@@ -107,23 +139,20 @@ function loadLevel ( lvl: number = 0) : boolean {
 	
 	for (var i = 0; i < levels[ lvl ].length; i++) {
 		
-		var value = levels[ lvl ][i];
+		var value = levels[ lvl ][ i ];
+		var object: Enemy | Obstacle;
 
 		switch ( value.type ) {
 
 			case 'enemy':
-				
-				var enemy = new Enemy( playArea, value.width, value.height, value.velocity );
-				enemy.release( value.time );
+				object = new Enemy( playArea, value.width, value.height, value.velocity );
 				break;
 
 			case 'obstacle':
-				
-				var obstacle = new Obstacle( playArea, value.width, value.height, value.velocity );
-				obstacle.release( value.time );
+				object = new Obstacle( playArea, value.width, value.height, value.velocity );
 				break;
 		}
-		
+		object.release( value.time );
 	}
 	
 	return true;

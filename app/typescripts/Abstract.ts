@@ -9,8 +9,6 @@ module app {
         protected height: number;
         protected width: number;
         protected velocity: number;
-
-        protected right: number = 0;
          
         constructor( playArea: HTMLElement, width: number, height: number, velocity: number) {
             

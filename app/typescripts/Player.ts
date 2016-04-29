@@ -8,7 +8,7 @@ module app {
     
     export class Player {
         
-        private body: HTMLElement;
+        body: HTMLElement;
         private forceJump: number;
         private isDead: boolean;
         private _isJumping: boolean = false;
@@ -44,8 +44,9 @@ module app {
             
             this.forceJump = this.forceJump < 1 ? this.forceJump + 0.1 : 1;
             
-            TweenMax.to(this.body, 0.1, {height: 50 - (20 * this.forceJump)});
-        }, 50 );
+            TweenMax.killTweensOf(this.body);
+            TweenMax.to(this.body, 0.25, {height: 50 - (20 * this.forceJump)});
+        }, 1 );
         
         jump = Utils.debounce( () => {
 
@@ -56,9 +57,9 @@ module app {
 
             this.isJumping = true;
             
-            TweenMax.to(this.body, 0.5 * this.forceJump, { height: '80px', bottom: 420 * this.forceJump, onComplete: () => {
+            TweenMax.to(this.body, 2 * this.forceJump, { height: '80px', bottom: 420 * this.forceJump, onComplete: () => {
                 
-                TweenMax.to(this.body, 2 * this.forceJump, { height: '50px', bottom: 0, onComplete: () => {
+                TweenMax.to(this.body, 1.6 * this.forceJump, { height: '50px', bottom: 0, onComplete: () => {
                     
                     this.isJumping = false;
                     this.forceJump = 0;
