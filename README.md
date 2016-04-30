@@ -1,17 +1,8 @@
 Walk Alone Game
 ===============
 
-Requerimientos:  [node](http://nodejs.org/) y [bower](http://bower.io/).
+[Demo](http://schmidtsonian.github.io/walk-alone/).
 
-Instrucciones
--------------
-
- 1. `~ git clone https://github.com/GrupoW/base-cli.git`
- 2. `~ cd walk-alone`
- 3. `~ npm && bower install`
- 4. `~ gulp`
- 5. [http://localhost:8080](http://localhost:8080)
- 
 Controles
 ---------
  - Presionar `j` para saltar
