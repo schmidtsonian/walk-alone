@@ -16,26 +16,38 @@ module app.game {
         private ticker: Ticker;
         private levelSelector: LevelSelector;
         
+        private isPlaying: boolean;
+        
         private playArea: HTMLElement;
+        private btPlay: HTMLElement;
+        private btReload: HTMLElement;
         
         constructor(){
 
+            this.btPlay = document.getElementById( 'js-bt-play' );
+            this.btReload = document.getElementById( 'js-bt-reload' );
+            
             this.playArea = document.getElementById( 'js-canvas' );
 	        this.player = new Player( this.playArea, 'js-player' );
             
             this.ticker = new Ticker( this.playArea, this.player );
             this.levelSelector = new LevelSelector( this.playArea );
+            
+            this.isPlaying = false;
         }
         
         start():void{
             
             this.bindings();
-            this.releaseLevels();
         }
         
         private bindings(): void {
             
-            // Controles de juego
+            this.btPlay.onclick = this.play.bind(this); 
+            this.btReload.onclick = this.reload.bind(this); 
+            
+            
+            // Controles player
             document.body.onkeydown = (e) => {
                 
                 e.preventDefault();
@@ -56,9 +68,24 @@ module app.game {
                 //letra j (salta)
                 if( e.which == 74){ this.player.jump(); }
             }
+            
+            
+        }
+        
+        private reload (): void {
+            location.reload();
+        }
+        
+        private play(): void {
+            this.releaseLevels();
         }
         
         private releaseLevels(): void {
+            
+            if( this.isPlaying ) return
+            
+            this.isPlaying = true;
+            
             setTimeout( () => {
                 this.levelSelector.load(1);
             }, 100 );

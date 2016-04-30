@@ -103,7 +103,7 @@ module app.game {
         // Carga un nivel!
         load ( lvl: number = 0) : boolean {
             
-            console.log('Load LVL -> ', lvl -1);
+            console.log('Load LVL -> ', lvl);
             if( lvl < 1 || lvl > levels.length ) return false;
             lvl = lvl - 1;
             

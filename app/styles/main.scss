@@ -35,6 +35,23 @@ body{
 	overflow: hidden;
 }
 
+.bt{
+	width: 200px;
+	height: 40px;
+	bottom: -600px;
+	text-align: center;
+	line-height: 40px;
+	color: $COLOR_BG;
+	background-color: $COLOR_CANVAS;
+	cursor: pointer;
+}
+.bt--play{
+	left: -260px;
+}
+.bt--reload{
+	right: -260px;
+}
+
 .player,
 .bullet,
 .obstacle,
