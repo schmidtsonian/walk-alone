@@ -2,15 +2,15 @@
 /// <reference path="IRect.ts" />
 
 
-module app {
+module app.game {
     
-    import IRect = app.IRect;
+    import IRect = app.game.IRect;
     
     export class Ticker {
         
-        private player: app.Player;
+        private player: app.game.Player;
         private playArea: HTMLElement;
-        constructor( playArea: HTMLElement, player: app.Player ) {
+        constructor( playArea: HTMLElement, player: app.game.Player ) {
             
             this.player = player;
             this.playArea = playArea;

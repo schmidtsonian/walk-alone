@@ -86,10 +86,10 @@ var levels = [
 	],
 ];
 
-module app {
+module app.game {
     
-    import Enemy = app.Enemy;
-    import Obstacle = app.Obstacle;
+    import Enemy = app.game.Enemy;
+    import Obstacle = app.game.Obstacle;
 
     export class LevelSelector {
         

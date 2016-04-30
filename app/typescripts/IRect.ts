@@ -1,4 +1,5 @@
-module app {
+module app.game {
+
     export interface IRect {
         x: number;
         y: number;

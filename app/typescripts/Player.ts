@@ -2,9 +2,9 @@
 
 /// <reference path="Utils.ts" />
 
-module app {
+module app.game {
     
-    import Utils = app.Utils;
+    import Utils = app.game.Utils;
     
     export class Player {
         

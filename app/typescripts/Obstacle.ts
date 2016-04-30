@@ -1,8 +1,8 @@
 /// <reference path="Abstract.ts" />
 
-module app {
+module app.game {
     
-    export class Obstacle extends app.Abstract {
+    export class Obstacle extends app.game.Abstract {
         
         constructor( playArea: HTMLElement, width: number = 10, height: number = 10, velocity: number = .5 ) {
             

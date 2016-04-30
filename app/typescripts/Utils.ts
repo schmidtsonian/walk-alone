@@ -1,8 +1,8 @@
 /// <reference path="IRect.ts" />
 
-module app {
+module app.game {
 
-    import IRect = app.IRect;
+    import IRect = app.game.IRect;
     
     export class Utils {
         

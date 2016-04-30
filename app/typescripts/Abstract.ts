@@ -1,6 +1,6 @@
 /// <reference path="definitions/greensock/greensock.d.ts" />
 
-module app {
+module app.game {
     
     export class Abstract {
         
