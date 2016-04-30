@@ -16,12 +16,20 @@ var connect         = require('gulp-connect');
 var appFolder  = 'app';
 var distFolder = 'dist';
 
-var path = {
-    scripts : {
-        src  : appFolder + '/typescripts/**/*.ts',
-        out  : 'main.js',
-        dest : distFolder + '/js/',
-        vendor: 'vendor.js'
+var settings = {
+    bower: {
+        src: './bower.json'
+    },
+    scripts: {
+        src: appFolder + '/typescripts/**/*.ts',
+        out: 'main.js',
+        dest: distFolder + '/js/',
+        vendor: 'vendor.js',
+        tsProject: ts.createProject( {
+            declaration: true,
+            noExternalResolve: true,
+            target: 'ES5',
+        } )
     },
     styles  : {
         src  : appFolder + '/styles/**/*.scss',
@@ -42,50 +50,52 @@ gulp.task( 'webserver', function() {
 });
  
 gulp.task( 'main-bower-files', function() {
-    return gulp.src( './bower.json' )
+    return gulp.src( settings.bower.src )
         .pipe( mainBowerFiles() )
-        .pipe( concat( path.scripts.vendor ))
+        .pipe( concat( settings.scripts.vendor ))
         .pipe( uglify() )
-        .pipe( gulp.dest( path.scripts.dest) );
+        .pipe( gulp.dest( settings.scripts.dest) );
 });
 
 //TO-DO:
 //watch all typescript files and reload on save
 gulp.task( 'scripts', function () {
-    return gulp.src( path.scripts.src )
-        .pipe( sourcemaps.init() )
-        .pipe( ts( {
-			          out: path.scripts.out,
-                   target: "ES6",
-			noImplicitAny: true,
-		}))
-        .pipe( sourcemaps.write() )
-        .pipe( gulp.dest( path.scripts.dest ))
-        .pipe( connect.reload() );
+    
+    
+    var tsResult = gulp.src( settings.scripts.src )
+        .pipe( sourcemaps.init())
+        .pipe(ts( settings.scripts.tsProject ));
+ 
+    return tsResult
+         .pipe( concat(settings.scripts.out ))
+         .pipe( uglify()) 
+         .pipe( sourcemaps.write() ) 
+         .pipe( gulp.dest( settings.scripts.dest ))
+         .pipe( connect.reload() );
 });
 
 gulp.task( 'styles', function () {
-    return gulp.src( path.styles.src )
+    return gulp.src( settings.styles.src )
         .pipe( sourcemaps.init() )
         .pipe( sass().on( 'error', sass.logError) )
         .pipe( sass( { outputStyle: 'compressed' } ))
         .pipe( sourcemaps.write() )
-        .pipe( gulp.dest( path.styles.dest ))
+        .pipe( gulp.dest( settings.styles.dest ))
         .pipe( connect.reload() );
 });
 
 gulp.task( 'views', function() {
-    return gulp.src(path.views.src)
+    return gulp.src(settings.views.src)
         .pipe( jade( { pretty: false } ))
-        .pipe( gulp.dest( path.views.dest ))
+        .pipe( gulp.dest( settings.views.dest ))
         .pipe( connect.reload() );
 });
 
-gulp.task('watch', function () {
+gulp.task( 'watch', function () {
 
-    gulp.watch( path.views.src, [ 'views' ] );
-    gulp.watch( path.styles.src, [ 'styles' ] );
-    gulp.watch( path.scripts.src, [ 'scripts' ] );
+    gulp.watch( settings.views.src, [ 'views' ] );
+    gulp.watch( settings.styles.src, [ 'styles' ] );
+    gulp.watch( settings.scripts.src, [ 'scripts' ] );
 });
 
 gulp.task( 'default', [
