@@ -26,3 +26,4 @@ Tips
 - Solo existen 3 niveles :(
 - Los obstaculos se pueden destruir, son elementos que les gusta estar volando.
 - Los enemigos son indestructibles, son elementos terrestres.
+- Los obstaculos y los enemigos son de diferentes colores!
